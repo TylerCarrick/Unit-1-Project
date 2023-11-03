@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public HeathBar healthBar;
+    public int maxHealth = 5;
+    public int currentHealth;
     [SerializeField] Transform groundCheckCollider;
     [SerializeField] LayerMask groundLayer;
     bool isGrounded = false;
@@ -20,13 +23,20 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
 
 
     void Update()
     {
-      
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(1);
+        }
+       
+        
         int speed = 7;
         int jumpAmount = 6;
         anim.SetBool("Run", false);
@@ -88,5 +98,16 @@ public class Player : MonoBehaviour
 
         }
     }
+
+    void TakeDamage (int damage)
+    {
+        currentHealth -= damage;
+        healthBar.Sethealth(currentHealth);
+    }
+
+
+
+
+
 }
 
