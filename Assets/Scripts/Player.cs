@@ -31,10 +31,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(1);
-        }
+       
+       
+        
        
         
         int speed = 7;
@@ -97,16 +96,22 @@ public class Player : MonoBehaviour
 
 
         }
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+
     }
 
-    void TakeDamage (int damage)
+   
+
+
+    public void damagePlayer(int damage)
     {
         currentHealth -= damage;
-        healthBar.Sethealth(currentHealth);
+
     }
-
-
-
 
 
 }
