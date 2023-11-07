@@ -36,8 +36,8 @@ public class Player : MonoBehaviour
         
        
         
-        int speed = 7;
-        int jumpAmount = 6;
+        int speed = 10;
+        int jumpAmount = 8;
         anim.SetBool("Run", false);
         anim.SetBool("Jump", false);
 
